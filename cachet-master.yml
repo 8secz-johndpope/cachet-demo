@@ -1,0 +1,18 @@
+Resources:
+  VPC:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: https://s3.amazonaws.com/cachetdemo/vpc-cfn.yml
+
+  ECS:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: https://s3.amazonaws.com/cachetdemo/ecs-cfn.yml
+      Parameters:
+        VPC: !GetAtt VPC.Outputs.VPC
+        Subnets: !GetAtt VPC.Outputs.PublicSubnets
+
+Outputs:
+  CachetURL:
+    Description: The URL endpoint for the website service
+    Value: !Join ["", [!GetAtt ECS.Outputs.CachetURL, "/"]]
