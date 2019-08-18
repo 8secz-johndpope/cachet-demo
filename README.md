@@ -14,13 +14,13 @@ ALB’s
 ECS Fargate Service
 
 #	Purpose
-	A Status page is very useful for your business and is application to any internet services
+A Status page is very useful for your business and is application to any internet services
 Cachet Team have done a great job in developing such a wonderful tool and decided to share with us.
 This project is inspired by https://docs.cachethq.io, https://github.com/CachetHQ/Docker
 I wanted to setup a Status page as well as a monitoring solution on Lambda(Coming soon) and post the metrics onto Cachet’s REST API. (https://docs.cachethq.io/v1.0/reference#ping)
 
 #	Deployment
-	I have created few Cloudformation templates which will help you setup the Cachet in your on AWS VPC of your choice. Or you may create your own VPC network from scratch.
+I have created few Cloudformation templates which will help you setup the Cachet in your on AWS VPC of your choice. Or you may create your own VPC network from scratch.
 The project is dockerized and we will deploy it on ECS Fargate.
 
 The ecs-cfn.yml will create, TaskDefinition, ALB, ECSCluster and maintain your desired state
@@ -45,8 +45,8 @@ To test the Cachet Docker project locally
 You may find my test site on https://cachet.demoindevops.com/ (Work in progress)
 
 #	Secrets
-	Here in these templates, I have used AWS Secrets manager to create secrets for RDS instance as well secrets for the Cachet app which will be passed as ENV variable in ECS Task definition.
+Here in these templates, I have used AWS Secrets manager to create secrets for RDS instance as well secrets for the Cachet app which will be passed as ENV variable in ECS Task definition.
 
 #	Autoscaling
-	The current autoscaling policy will scale the cluster according to the CPUUtilization of the containers. You may modify the template to add different conditions such as ALB Request count or based on Cloudwatch alarm.
+The current autoscaling policy will scale the cluster according to the CPUUtilization of the containers. You may modify the template to add different conditions such as ALB Request count or based on Cloudwatch alarm.
 
