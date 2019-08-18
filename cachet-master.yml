@@ -2,12 +2,12 @@ Resources:
   VPC:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: https://s3.amazonaws.com/cachetdemo/vpc-cfn.yml
+      TemplateURL: https://s3.amazonaws.com/<S3Bucket>/vpc-cfn.yml    ##Fix this
 
   ECS:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: https://s3.amazonaws.com/cachetdemo/ecs-cfn.yml
+      TemplateURL: https://s3.amazonaws.com/<S3Bucket>/ecs-cfn.yml  ##Fix this
       Parameters:
         VPC: !GetAtt VPC.Outputs.VPC
         Subnets: !GetAtt VPC.Outputs.PublicSubnets

@@ -27,7 +27,6 @@ Parameters:
   HostedZoneName:
     Description: Domain Name
     Type: String
-    Default: demoindevops.com
   Subdomain:
     Description: Subdomain to be created for this project
     Type: String
@@ -157,7 +156,7 @@ Resources:
             - Name: SESSION_DRIVER
               Value: apc
             - Name: APP_KEY
-              Value: base64:46tdfZqQrK/ES2D/83wnV51oVmtAFMj9x+9Ux4cRwLU=
+              Value: <APP_KEY>  #Fill this value
             - Name: DB_USERNAME
               Value: !Join ['', ['{{resolve:secretsmanager:', !Ref RDSInstanceSecret, ':SecretString:username}}' ]]
             - Name: DB_PASSWORD
@@ -306,7 +305,7 @@ Resources:
       Port: 443
       Protocol: HTTPS
       Certificates:
-        - CertificateArn: !Sub "arn:aws:acm:${AWS::Region}:${AWS::AccountId}:certificate/2ad78be4-d621-442a-a131-29984658b1ce"
+        - CertificateArn: !Sub <ARN> ##Fill this value
 
   LoadBalancer:
     Type: AWS::ElasticLoadBalancingV2::LoadBalancer
