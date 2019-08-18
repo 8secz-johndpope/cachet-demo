@@ -147,7 +147,7 @@ Resources:
             - Name: APP_ENV
               Value: production
             - Name: APP_URL
-              Value: !Join ['', ['http://', !GetAtt LoadBalancer.DNSName]]
+              Value: !Join ['', ['https://', !Ref DNSRecord]]
             - Name: DB_DRIVER
               Value: mysql
             - Name: DB_DATABASE
@@ -270,7 +270,7 @@ Resources:
       UnhealthyThresholdCount: 2
       HealthyThresholdCount: 2
       Matcher:
-        HttpCode: '302'
+        HttpCode: '200'
       Name: !Join ['', [!Ref ServiceName, TargetGroup]]
       Port: !Ref ContainerPort
       Protocol: HTTP
@@ -354,8 +354,8 @@ Resources:
       TargetTrackingScalingPolicyConfiguration:
         PredefinedMetricSpecification:
           PredefinedMetricType: ECSServiceAverageCPUUtilization
-        ScaleInCooldown: 10
-        ScaleOutCooldown: 10
+        ScaleInCooldown: 30
+        ScaleOutCooldown: 30
         TargetValue: !Ref AutoScalingTargetValue
 
 Outputs:
