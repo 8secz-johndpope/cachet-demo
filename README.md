@@ -42,7 +42,6 @@ Access you Cachet implementation with the URL you may find in cloudformation sta
 To test the Cachet Docker project locally
 	docker run --name cachet -e DB_HOST=<DatabaseHost> -e DB_USERNAME=<username> -e DB_PASSWORD=<password> -e APP_KEY=<base64AppKey> -p 8000:8000 cachethq/docker:latest
 
-You may find my test site on https://cachet.demoindevops.com/ (Work in progress)
 
 #	Secrets
 Here in these templates, I have used AWS Secrets manager to create secrets for RDS instance as well secrets for the Cachet app which will be passed as ENV variable in ECS Task definition.
